@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Ip, Param, Post, Put } from "@nestjs/common";
 import {CreateUserDto} from './dto/createuserdto'
 
 let USERS = []
@@ -16,7 +16,8 @@ export class UserController{
     }
 
     @Get()
-    getUsers(){
+    getUsers(@Ip() ip:string){
+        console.log(ip) // gives the ip of request
         return USERS
     }
 
@@ -41,7 +42,7 @@ export class UserController{
     @Delete(":id")
     daleteUser(@Param("id") id:number){
         USERS = USERS.filter(user => +user.id !== +id)
-        
+
     }
 
 
