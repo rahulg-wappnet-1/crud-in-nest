@@ -48,13 +48,25 @@ export class UserController{
 
 //************************************************************************************** *
 
-    constructor(private store: UsersStore){
-        console.log(this.store)
-    } // --- 2
+    // constructor(private store: UsersStore){
+    //     console.log(this.store)
+    // } // --- 2
 
     // constructor(@Inject('STORE') private store: UsersStore ){
     //     console.log(this.store)
     // } --- 1
 
+    //value provider 
+    // constructor(@Inject('DATABASE_NAME') private db:string ){
+    //     console.log(db)
+    // } //--- string value as provider
+
+    // constructor(@Inject('MAIL') private email:string[]){
+    //     console.log(email)
+    // } // array as provider
+
+    constructor(@Inject('ENV_CONFIG') private config:Record<string,number>){
+        console.log(config)
+    } // object as provider
 
 }
